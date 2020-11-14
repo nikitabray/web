@@ -1,1 +1,1 @@
-sudonginx -c /home/box/web/etc/nginx.conf
+sudo nginx -c /home/box/web/etc/nginx.conf
