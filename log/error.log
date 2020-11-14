@@ -1,1 +1,2 @@
 2020/11/14 18:12:04 [error] 23076#0: *2 open() "/Users/nikitabray/subl/web/nginx/public/test.txtfsd" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /test.txtfsd HTTP/1.1", host: "localhost"
+2020/11/14 18:49:24 [error] 23964#0: *1 open() "/Users/nikitabray/subl/web/uploadsff.js" failed (2: No such file or directory), client: 127.0.0.1, server: localhost, request: "GET /uploads/ff.js HTTP/1.1", host: "localhost"
