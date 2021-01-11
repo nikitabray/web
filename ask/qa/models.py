@@ -16,12 +16,12 @@ class Question(models.Model):
         verbose_name = 'Question'
         ordering = ['-added_at']
 
-    class QuestionManager(models.Manager):
-        def new(self):
-            return self.order_by('-added_at')
+class QuestionManager(models.Manager):
+    def new(self):
+        return self.order_by('-added_at')
 
-        def popular(self):
-            return self.order_by('-rating')
+    def popular(self):
+        return self.order_by('-rating')
 
 
 class Answer(models.Model):
