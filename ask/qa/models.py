@@ -15,7 +15,7 @@ class Question(models.Model):
 
     class Meta:
         verbose_name = 'Вопрос'
-        order_by = ['-added_at']
+        ordering = ['-added_at']
 
     class QuestionManager(models.Manager):
         def new(self):
