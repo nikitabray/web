@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class QuestionManager(models.Manager):
     def new(self):
-        return self.order_by('-added_at')
+        return self.order_by('-id')
 
     def popular(self):
         return self.order_by('-rating')
@@ -21,7 +21,7 @@ class Question(models.Model):
 
     class Meta:
         verbose_name = 'Question'
-        ordering = ['-added_at']
+        ordering = ['-id']
 
 class Answer(models.Model):
     text = models.TextField()

@@ -1,10 +1,10 @@
 from django.conf import settings
 from django.urls import path
-from .views import test
+from .views import *
 
 
 urlpatterns = [
-    path('', test, name='home'),
+    path('', mainpage, name='home'),
     path('login/', test, name='login'),
     path('signup/', test, name='signup'),
     path('question/<int:question_id>/', test, name='question'),
