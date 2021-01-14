@@ -29,5 +29,6 @@ class Answer(models.Model):
     question = models.OneToOneField(
         Question,
         on_delete=models.CASCADE,
+        related_name='answer'
     )
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='answer_user')
