@@ -7,8 +7,8 @@ urlpatterns = [
     path('', mainpage, name='home'),
     path('login/', test, name='login'),
     path('signup/', test, name='signup'),
-    path('question/<int:question_id>/', test, name='question'),
+    path('question/<int:question_id>/', question, name='question'),
     path('ask/', test, name='ask'),
-    path('popular/', test, name='popular'),
+    path('popular/', popular, name='popular'),
     path('new/', test, name='new'),
 ]
