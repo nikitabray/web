@@ -15,3 +15,13 @@ def mainpage(request):
     page = paginator.page(page)
     context = {'page': page, 'posts': page.object_list}
     return render(request, 'index.html', context)
+
+def popular(request):
+    paginator = Paginator(Question.objects.popular(), 10)
+    page = request.GET.get('page', 1)
+    paginator.baseurl = '/?page='
+    page = paginator.page(page)
+    context = {'page': page, 'posts': page.object_list}
+    return render(request, 'index.html', context)
+
+
