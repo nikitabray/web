@@ -25,6 +25,7 @@ def popular(request):
     return render(request, 'index.html', context)
 
 def question(request, question_id):
-    question = [Question.objects.get(pk=question_id)]
-    context = {'posts': question}
-    return render(request, 'index.html', context)
+    question = Question.objects.get(pk=question_id)
+    answer = Answer.objects.filter(question=question)
+    context = {'question': question, 'answer': answer}
+    return render(request, 'question.html', context)
