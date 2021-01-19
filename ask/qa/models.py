@@ -17,7 +17,7 @@ class Question(models.Model):
     text = models.TextField(blank=True)
     added_at = models.DateTimeField(auto_now_add=True)
     rating = models.IntegerField(default=0)
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='question_user')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='question_user', default=1)
     likes = models.ManyToManyField(User, related_name='question_like_user')
 
     class Meta:
