@@ -17,6 +17,7 @@ def mainpage(request):
     context = {'page': page, 'posts': page.object_list}
     return render(request, 'index.html', context)
 
+
 def popular(request):
     paginator = Paginator(Question.objects.popular(), 10)
     page = request.GET.get('page', 1)
@@ -25,11 +26,13 @@ def popular(request):
     context = {'page': page, 'posts': page.object_list}
     return render(request, 'index.html', context)
 
+
 def question(request, question_id):
     question = Question.objects.get(pk=question_id)
     answer = Answer.objects.filter(question=question)
     context = {'question': question, 'answer': answer}
     return render(request, 'question.html', context)
+
 
 def postform(request):
     if request.method == 'POST':
@@ -37,4 +40,6 @@ def postform(request):
         if form.is_valid():
             question = form.save()
             return HttpResponseRedirect('/question/' + str(question.id))
-
+        else:
+            form = AskForm()
+        return render(request, 'add_post.html', {'form': form})
