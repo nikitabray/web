@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.core.paginator import Paginator
 from .models import *
+from .forms import *
 
 
 def test(request, *args, **kwargs):
@@ -29,3 +30,11 @@ def question(request, question_id):
     answer = Answer.objects.filter(question=question)
     context = {'question': question, 'answer': answer}
     return render(request, 'question.html', context)
+
+def postform(request):
+    if request.method == 'POST':
+        form = AskForm(request.POST)
+        if form.is_valid():
+            question = form.save()
+            return HttpResponseRedirect('/question/' + str(question.id))
+
