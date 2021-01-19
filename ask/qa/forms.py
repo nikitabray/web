@@ -7,7 +7,8 @@ class AskForm(forms.ModelForm):
         fields = ['title', 'text', 'author']
 
     def clean():
-        return self.cleaned_data
+        if self.is_valid():
+            return self.cleaned_data
 
 
 
