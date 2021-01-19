@@ -3,6 +3,7 @@
 {% block title %}{{ question.title }}{% endblock title %}
 
 {% block body %}
+{% csrf_token %}
 {{ question.title }}
 {{ question.text }}
 {% for ans in answer %}
