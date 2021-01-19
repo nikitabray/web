@@ -39,7 +39,7 @@ def postform(request):
         form = AskForm(request.POST)
         if form.is_valid():
             question = form.save()
-            return HttpResponseRedirect('/question/' + str(question.id))
+            return HttpResponseRedirect('/question/' + 'wwffweff' )
     else:
         form = AskForm()
     return render(request, 'add_post.html', {'form': form})
