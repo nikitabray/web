@@ -42,4 +42,4 @@ def postform(request):
             return HttpResponseRedirect('/question/' + str(question.id))
         else:
             form = AskForm()
-        return render(request, 'add_post.html', {'form': form})
+    return render(request, 'add_post.html', {'form': form})
