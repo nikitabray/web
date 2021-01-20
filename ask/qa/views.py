@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.core.paginator import Paginator
+from django.contrib.auth import authenticate, login 
 from .models import *
 from .forms import *
 
