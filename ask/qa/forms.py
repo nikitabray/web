@@ -3,26 +3,36 @@ from django.contrib.auth.models import User
 from django import forms
 from .models import *
 
+
 class AskForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ['title', 'text', ]
+        fields = [
+            'title',
+            'text',
+        ]
 
     def clean(self):
         return self.cleaned_data
 
+
 class AnswerForm(forms.ModelForm):
     class Meta:
         model = Answer
-        fields = ['text', 'question', ]
+        fields = [
+            'text',
+            'question',
+        ]
 
 
 class SignUpForm(forms.Form):
     username = forms.CharField(max_length=80)
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
+
     def save(self):
         User.objects.create_user(**self)
+
 
 # class SignUpForm(forms.Form):
 #     password = forms.CharField(label=("Password"),
@@ -31,6 +41,3 @@ class SignUpForm(forms.Form):
 #     class Meta:
 #         model = User
 #         fields = ('username', 'email', 'password')
-
-
-
