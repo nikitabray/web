@@ -43,3 +43,18 @@ def postform(request):
     else:
         form = AskForm()
     return render(request, 'add_post.html', {'form': form})
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password1']
+        email = form.cleaned_data['email']
+        user = authenticate(username=username, password=password)
+        login(request, user)
+        return HttpResponseRedirect('home')
+    else:
+        form = SignUpForm()
+        return render(request, 'signup.html', {'form': form})
