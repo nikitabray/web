@@ -18,7 +18,7 @@ class AnswerForm(forms.ModelForm):
 
 
 class SignUpForm(UserCreationForm):
-    password = super().password1
+    password = super(self).password1
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
