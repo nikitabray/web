@@ -19,8 +19,10 @@ class AnswerForm(forms.ModelForm):
 
 class SignUpForm(forms.Form):
     username = forms.CharField(max_length=80)
-    password = forms.CharField(widget=forms.PasswordInput)
     email = forms.EmailField()
+    password = forms.CharField(widget=forms.PasswordInput)
+    def save(self):
+        User.objects.create_user(**self)
 
 # class SignUpForm(forms.Form):
 #     password = forms.CharField(label=("Password"),
