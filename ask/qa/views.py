@@ -60,5 +60,5 @@ def signup(request):
         form = SignUpForm()
         return render(request, 'signup.html', {'form': form})
 
-def login(request):
+def login_to_site(request):
     pass
