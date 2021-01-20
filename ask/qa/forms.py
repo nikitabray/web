@@ -17,13 +17,18 @@ class AnswerForm(forms.ModelForm):
         fields = ['text', 'question', ]
 
 
-class SignUpForm(UserCreationForm):
-    password = forms.CharField(label=("Password"),
-        widget=forms.PasswordInput)
-    password1 = password
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'password')
+class SignUpForm(forms.Form):
+    username = forms.CharField(max_length=80)
+    password = forms.CharField(widget=forms.PasswordInput)
+    email = forms.EmailField()
+
+# class SignUpForm(forms.Form):
+#     password = forms.CharField(label=("Password"),
+#         widget=forms.PasswordInput)
+#     password1 = password
+#     class Meta:
+#         model = User
+#         fields = ('username', 'email', 'password')
 
 
 
