@@ -18,8 +18,9 @@ class AnswerForm(forms.ModelForm):
 
 
 class SignUpForm(UserCreationForm):
-    password = self.password1
-    password1 = self.password
+    password = forms.CharField(label=("Password"),
+        widget=forms.PasswordInput)
+    password1 = password
     class Meta:
         model = User
         fields = ('username', 'email', 'password')
