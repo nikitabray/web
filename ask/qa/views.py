@@ -66,9 +66,8 @@ def login_to_site(request):
     if request.method == 'POST':
         form = AuthenticationForm(request.POST)
         if form.is_valid():
-            user = authenticate(username=username, password=password)
             if user:
-                login(request, user)
+                login(request, form.get_user())
         response = HttpResponseRedirect('home')
         response.set_cookie('sessionid', request.session.get('key'))
         return response
