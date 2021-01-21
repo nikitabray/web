@@ -37,7 +37,6 @@ def question(request, question_id):
 
 
 def postform(request):
-    question = ''
     if request.method == 'POST':
         form = AskForm(request.user, request.POST)
         if form.is_valid():
