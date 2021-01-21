@@ -61,6 +61,7 @@ def signup(request):
         response = HttpResponseRedirect('home')
         if not request.session.session_key:
             request.session.save()
+        print(request.session.session_key)
         response.set_cookie('sessionid', request.session.session_key)       
         return response
     else:
