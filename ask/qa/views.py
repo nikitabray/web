@@ -58,7 +58,8 @@ def signup(request):
         if user:
             login(request, user)
         response = HttpResponseRedirect('home')
-        response.set_cookie('sessionid', key=request.session.get('key'), domain='10.42.2.110')       
+        response.set_cookie('sessionid', request.session.get('key'))       
+        print(request.session.keys())
         return response
     else:
         form = SignUpForm()
