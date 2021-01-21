@@ -55,11 +55,12 @@ def signup(request):
         password = form.cleaned_data['password']
         email = form.cleaned_data['email']
         user = authenticate(username=username, password=password)
+        print('user is ', user)
         if user:
             login(request, user)
         response = HttpResponseRedirect('home')
         if not request.session.session_key:
-            request.session.create()
+            request.session.save()
         response.set_cookie('sessionid', request.session.session_key)       
         return response
     else:
@@ -71,10 +72,11 @@ def login_to_site(request):
         form = AuthenticationForm(request.POST)
         if form.is_valid():
             if user:
+                print(form.get_user())
                 login(request, form.get_user())
         response = HttpResponseRedirect('home')
         if not request.session.session_key:
-            request.session.create()
+            request.session.save()
         response.set_cookie('sessionid', request.session.session_key) 
         print(request.session.get('session_key'))
         return response
