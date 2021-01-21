@@ -39,12 +39,11 @@ def question(request, question_id):
 def postform(request):
     if request.method == 'POST':
         form = AskForm(request.POST)
-        form._user = request.user
         if form.is_valid():
             question = form.save()
             return HttpResponseRedirect('/question/' + str(question.id))
     else:
-        form = AskForm()
+        form = AskForm(user=request.user)
     return render(request, 'add_post.html', {'form': form})
 
 def signup(request):
