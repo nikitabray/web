@@ -55,7 +55,8 @@ def signup(request):
         password = form.cleaned_data['password']
         email = form.cleaned_data['email']
         user = authenticate(username=username, password=password)
-        login(request, user)
+        if user:
+            login(request, user)
         return HttpResponseRedirect('home')
     else:
         form = SignUpForm()
@@ -65,6 +66,7 @@ def login_to_site(request):
     if request.method == 'POST':
         form = AuthenticationForm(request.POST)
         if form.is_valid():
+            user = authenticate(username=username, password=password)
             login(request, form.get_user())
         return HttpResponseRedirect('home')
     else:
