@@ -5,6 +5,9 @@ from .models import *
 
 
 class AskForm(forms.ModelForm):
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+        super(AskForm, self).__init__(*args, **kwargs)
     class Meta:
         model = Question
         fields = [
@@ -16,7 +19,7 @@ class AskForm(forms.ModelForm):
         return self.cleaned_data
 
     def save(self):
-        self.cleaned_data['author'] = self._user
+        self.cleaned_data['author'] = self.user
         question = Question(**self.cleaned_data)
         question.save()
         return question
