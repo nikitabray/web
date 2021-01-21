@@ -16,7 +16,7 @@ class AskForm(forms.ModelForm):
         ]
 
     def clean(self):
-        self.cleaned_data['author'] = User.objects.get('id'=self.user)
+        self.cleaned_data['author'] = User.objects.get(id=self.user)
         return self.cleaned_data
 
     def save(self):
