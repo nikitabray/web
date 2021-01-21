@@ -72,7 +72,7 @@ def login_to_site(request):
             if user:
                 login(request, form.get_user())
         response = HttpResponseRedirect('home')
-        response.set_cookie('sessionid', request.session) 
+        response.set_cookie('sessionid', 'sasa') 
         return response
     else:
         form = AuthenticationForm()
