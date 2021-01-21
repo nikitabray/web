@@ -69,7 +69,9 @@ def login_to_site(request):
             user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
-        return HttpResponseRedirect('home')
+        response = HttpResponseRedirect('home')
+        response.set_cookie('sessionid', sessionid, domain='.com')
+        return response
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})

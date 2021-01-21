@@ -13,7 +13,5 @@ mysql -uroot -e "grant all privileges on stepic_web.* to 'box'@'localhost' with 
 python3 ~/web/ask/manage.py makemigrations
 python3 ~/web/ask/manage.py migrate
 
-sudo nginx -c /home/box/web/etc/nginx.conf  
 python3 /home/box/web/ask/manage.py runserver 0.0.0.0:8000 &
-
-
+sudo nginx -c /home/box/web/etc/nginx.conf
