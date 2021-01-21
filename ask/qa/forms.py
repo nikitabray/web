@@ -7,8 +7,7 @@ from .models import *
 class AskForm(forms.ModelForm):
 
     def __init__(self, user, *args, **kwargs):
-        self.user = user
-        self.author = self.user
+        self.author = user
         super(AskForm, self).__init__(*args, **kwargs)
     class Meta:
         model = Question
