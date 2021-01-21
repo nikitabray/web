@@ -74,6 +74,7 @@ def login_to_site(request):
         response = HttpResponseRedirect('home')
         response.set_cookie('sessionid', 'sasa') 
         print(request.session.session_key)
+        print(request.session.session_data)
         return response
     else:
         form = AuthenticationForm()
