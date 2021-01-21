@@ -5,7 +5,6 @@ from .models import *
 
 
 class AskForm(forms.ModelForm):
-    _user = ''
     class Meta:
         model = Question
         fields = [
