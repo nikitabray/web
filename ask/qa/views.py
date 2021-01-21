@@ -60,7 +60,7 @@ def signup(request):
         response = HttpResponseRedirect('home')
         if not request.session.session_key:
             request.session.save()
-        response.set_cookie('sessionid', request.session.session_key))       
+        response.set_cookie('sessionid', request.session.session_key)       
         return response
     else:
         form = SignUpForm()
@@ -75,7 +75,7 @@ def login_to_site(request):
         response = HttpResponseRedirect('home')
         if not request.session.session_key:
             request.session.save()
-        response.set_cookie('sessionid', request.session.session_key)) 
+        response.set_cookie('sessionid', request.session.session_key) 
         print(request.session.get('session_key'))
         return response
     else:
