@@ -75,9 +75,9 @@ def login_to_site(request):
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(username=username, password=password)
-            if user:
+            if user is not None:
                 print(form.get_user())
-                login(request, form.get_user())
+                login(request, user)
         response = HttpResponseRedirect('home')
         if not request.session.session_key:
             request.session.save()
