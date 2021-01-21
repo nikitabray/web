@@ -72,6 +72,7 @@ def login_to_site(request):
     if request.method == 'POST':
         form = AuthenticationForm(request.POST)
         if form.is_valid():
+            print('AHAHEHDS;LDKAFLMF;AM')
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user = authenticate(username=username, password=password)
