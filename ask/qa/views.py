@@ -71,14 +71,16 @@ def signup(request):
 def login_to_site(request):
     if request.method == 'POST':
         form = AuthenticationForm(request.POST)
-        if form.is_valid():
-            print('AHAHEHDS;LDKAFLMF;AM')
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                print('HAHAHAHAHHA', user)
-                login(request, user)
+        # if form.is_valid():
+        #     print('AHAHEHDS;LDKAFLMF;AM')
+        #     username = form.cleaned_data['username']
+        #     password = form.cleaned_data['password']
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            print('HAHAHAHAHHA', user)
+            login(request, user)
         response = HttpResponseRedirect('home')
         if not request.session.session_key:
             request.session.save()
