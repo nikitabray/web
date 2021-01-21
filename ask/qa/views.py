@@ -67,7 +67,7 @@ def login_to_site(request):
         form = AuthenticationForm(request.POST)
         if form.is_valid():
             user = authenticate(username=username, password=password)
-            login(request, form.get_user())
+            login(request, user)
         return HttpResponseRedirect('home')
     else:
         form = AuthenticationForm()
