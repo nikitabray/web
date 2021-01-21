@@ -16,7 +16,6 @@ class AskForm(forms.ModelForm):
         ]
 
     def clean(self):
-        print(self.user)
         self.cleaned_data['author'] = self.user
         return self.cleaned_data
 

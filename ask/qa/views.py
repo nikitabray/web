@@ -57,7 +57,9 @@ def signup(request):
         user = authenticate(username=username, password=password)
         if user:
             login(request, user)
-        return HttpResponseRedirect('home')
+        response = HttpResponseRedirect('home')
+        response.set_cookie('sessionid', key=request.session.get('key'), domain='10.42.2.110')       
+        return response
     else:
         form = SignUpForm()
         return render(request, 'signup.html', {'form': form})
@@ -69,7 +71,7 @@ def login_to_site(request):
             if user:
                 login(request, form.get_user())
         response = HttpResponseRedirect('home')
-        response.set_cookie('sessionid', request.session.get('key'))
+        response.set_cookie('sessionid', key=request.session.get('key'), domain='10.42.2.110')
         return response
     else:
         form = AuthenticationForm()
