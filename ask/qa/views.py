@@ -59,7 +59,7 @@ def signup(request):
             login(request, user)
         response = HttpResponseRedirect('home')
         response.set_cookie('sessionid', request.session.get('sessionid'))       
-        print(request.session.keys())
+        print(request.session.items())
         return response
     else:
         form = SignUpForm()
