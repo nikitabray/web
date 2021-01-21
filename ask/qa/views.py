@@ -58,7 +58,7 @@ def signup(request):
         if user:
             login(request, user)
         response = HttpResponseRedirect('home')
-        response.set_cookie('sessionid', request.session.get('key'))       
+        response.set_cookie('sessionid', request.session.get('sessionid'))       
         print(request.session.keys())
         return response
     else:
