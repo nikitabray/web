@@ -38,12 +38,12 @@ def question(request, question_id):
 
 def postform(request):
     if request.method == 'POST':
-        form = AskForm(request.user, request.POST)
+        form = AskForm(request.session.get('_auth_user_id'), request.POST)
         if form.is_valid():
             question = form.save()
             return HttpResponseRedirect('/question/' + str(question.id))
     else:
-        form = AskForm(request.user)
+        form = AskForm(request.session.get('_auth_user_id'))
     return render(request, 'add_post.html', {'form': form})
 
 def signup(request):
@@ -59,7 +59,6 @@ def signup(request):
             login(request, user)
         response = HttpResponseRedirect('home')
         response.set_cookie('sessionid', request.session.get('sessionid'))       
-        print(request.session.items())
         return response
     else:
         form = SignUpForm()
