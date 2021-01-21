@@ -16,8 +16,7 @@ class AskForm(forms.ModelForm):
         ]
 
     def clean(self):
-        if isinstance(self.user, User):
-            self.cleaned_data['author'] = self.user
+        self.cleaned_data['author'] = self.user
         return self.cleaned_data
 
     def save(self):
